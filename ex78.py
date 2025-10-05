@@ -1,19 +1,22 @@
-# Crie um programa onde o usuário possa digitar cinco valores numéricos 
-# e cadastre-os em uma lista, já na posição correta de inserção (sem usar o sort())
-# . No final, mostre a lista ordenada na tela.
-lista = list()
+numeros = []
+mai = 0
+men = 0
 for c in range(0, 5):
-    n = int(input('Digite um valor: '))
-    if c == 0 or n > lista[-1]:
-        lista.append(n)
-        print('Adicionado ao final da lista...')
+    numeros.append(int(input(f'Digite um valor para a posição {c}: ')))
+    if c == 0:
+        mai = men = numeros[c]
     else:
-        pos = 0
-        while pos < len(lista):
-            if n <= lista[pos]:
-                lista.insert(pos, n)
-                print(f'Adicionado na posição {pos} da lista...')
-                break
-            pos += 1
-print('-=' * 30)
-print(f'Os valores digitados em ordem foram {lista}')
+        if numeros[c] > mai:
+            mai = numeros[c]
+        if numeros[c] < men:
+            men = numeros[c]
+print(f'Você digitou os valores {numeros}')
+print(f'O maior valor digitado foi {mai} nas posições... ', end='')
+for i, v in enumerate(numeros):
+    if v == mai:
+        print(f'{i}...')
+print(f'o menor valor digitado foi {men} nas posições... ', end='')
+for i, v in enumerate(numeros):
+    if v == men:
+        print(f'{i}...', end='')
+print()
